@@ -1,0 +1,114 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial;
+  margin: 0px;
+  padding: 8px;
+  background: DarkSlateGrey;
+}
+/* Header/Blog Title */
+.header {
+  background: white;
+  display: grid;
+  grid: auto / auto auto auto;
+  padding: 10px;
+}
+.header div{
+  width: 100%;
+}
+.icon_left {
+  float: left;
+  padding: 4px;
+}
+.icon_right {
+  float: right;
+  padding: 1px;
+}
+.header h1 {
+  font-size: 36px;
+  text-align: center;
+  color: darkcyan;
+}
+
+/* Create two unequal columns that floats next to each other */
+.row {
+  height: 770px;
+  padding-top: 10px;
+}
+/* Left column */
+.leftcolumn {
+  float: left;
+  width: 10%;
+  height: 100%;
+  background-color: cadetblue;
+}
+.user_dropdown {
+  padding: 10px;
+}
+.user_image {
+  padding: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 75%;
+}
+.leftcolumn p{
+  padding: 5px;
+  color: white;
+  font-size: 20px;
+}
+.leftcolumn b{
+  padding: 5px;
+  color: white;
+  font-size: 20px;
+}
+/* Right column */
+.rightcolumn {
+  float: left;
+  width: 90%;
+  height: 100%;
+  text-align: center;
+}
+
+.h2{
+  text-align: center;
+  color: white;
+  background-color: cadetblue;
+  padding: 1px;
+}
+
+/* Add a container in matrix form for the graphs*/
+.matrix_graph{
+  display: grid;
+  grid-template-columns: 25 15 auto auto;
+  grid-template-rows: 220px auto;
+  height: : 100%;
+  column-gap: 10px;
+  row-gap: 10px;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+.graph_box{
+  font-size: 30px;
+  height: 100%;
+}
+.dcc_graph_two_columns{
+  font-size: 30px;
+  width: 100%;
+  grid-column: 3 / span 2;
+}
+.dcc_graph_three_columns{
+  font-size: 30px;
+  text-align: center;
+  justify-content: center;
+  width: 100%;
+  grid-column: 1 / span 4;
+}
+.dcc_graph{
+  height: 100%;
+  width: 100%;
+  float: left;
+  border: 1px solid white;
+}
