@@ -8,16 +8,28 @@ body {
   padding: 8px;
   background: DarkSlateGrey;
 }
-/* Header/Blog Title */
-.header {
+
+/* Conatainers */
+.header_container {
   background: white;
   display: grid;
   grid: auto / auto auto auto;
   padding: 10px;
 }
-.header div{
-  width: 100%;
+.main_content_container {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  display: grid;
+  grid-template-columns: 10% 90%;
+  gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
 }
+.footer_container {
+  background: white;
+  padding: 10px;
+}
+
+/* Header/Blog Title */
 .icon_left {
   float: left;
   padding: 4px;
@@ -26,23 +38,22 @@ body {
   float: right;
   padding: 1px;
 }
-.header h1 {
+.header_title{
   font-size: 36px;
   text-align: center;
   color: darkcyan;
 }
 
 /* Create two unequal columns that floats next to each other */
-.row {
-  height: 770px;
-  padding-top: 10px;
-}
 /* Left column */
 .leftcolumn {
   float: left;
-  width: 10%;
-  height: 100%;
+  width: 100%;
   background-color: cadetblue;
+  height: 100%;
+  grid-column: 1;
+  grid-row: 1;
+  border: 1px solid white;
 }
 .user_dropdown {
   padding: 10px;
@@ -52,13 +63,15 @@ body {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 75%;
+  width: 100%;
 }
+/* Style of html.p components belonging to left column */
 .leftcolumn p{
   padding: 5px;
   color: white;
   font-size: 20px;
 }
+/* Style of html.b components belonging to left column */
 .leftcolumn b{
   padding: 5px;
   color: white;
@@ -67,28 +80,30 @@ body {
 /* Right column */
 .rightcolumn {
   float: left;
-  width: 90%;
+  width: 100%;
   height: 100%;
   text-align: center;
+  grid-column: 2;
+  grid-row: 1;
+  padding-right: 10px;
 }
-
-.h2{
+.sub_header{
   text-align: center;
   color: white;
   background-color: cadetblue;
   padding: 1px;
+  border: 1px solid white;
 }
-
 /* Add a container in matrix form for the graphs*/
 .matrix_graph{
   display: grid;
   grid-template-columns: 25 15 auto auto;
-  grid-template-rows: 220px auto;
+  grid-template-rows: 200px auto;
   height: : 100%;
   column-gap: 10px;
   row-gap: 10px;
   padding-top: 10px;
-  padding-left: 10px;
+
 }
 .graph_box{
   font-size: 30px;
@@ -96,7 +111,6 @@ body {
 }
 .dcc_graph_two_columns{
   font-size: 30px;
-  width: 100%;
   grid-column: 3 / span 2;
 }
 .dcc_graph_three_columns{
@@ -111,4 +125,16 @@ body {
   width: 100%;
   float: left;
   border: 1px solid white;
+}
+
+/* Footer section */
+.footer_section {
+  width: 100%;
+}
+
+.footer_section {
+    display: flex;
+    padding: 5px;
+    background-color: #45a1ff;
+    color: #fff;
 }
