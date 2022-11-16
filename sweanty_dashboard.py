@@ -25,8 +25,10 @@ def main() -> None:
             layout_components.footer(app),
             ]
         )
+    # App Callbacks
     callbacks.update_volunteer_data(app)
     callbacks.update_input_data(app)
+    # Run the app server
     app.run_server(debug=True)
 
 
