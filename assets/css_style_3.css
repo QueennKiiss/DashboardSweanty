@@ -25,7 +25,7 @@ body {
   grid-auto-rows: minmax(100px, auto);
 }
 .footer_container {
-  background: white;
+  background: cadetblue;
   padding: 10px;
 }
 
