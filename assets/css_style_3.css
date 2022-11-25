@@ -1,20 +1,29 @@
 * {
   box-sizing: border-box;
+  border-radius: 5px;
+}
+
+html {
+  height: 100vh;
 }
 
 body {
   font-family: Arial;
-  margin: 0px;
   padding: 8px;
   background: DarkSlateGrey;
+  height: 100vh; /* vh vertical height units */
+  margin: 0px;
 }
 
 /* Conatainers */
+/* .className otherwise #id */
 .header_container {
   background: white;
-  display: grid;
-  grid: auto / auto auto auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 10px;
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.7), -1px -1px 5px rgba(0,0,0,0.7);
 }
 .main_content_container {
   padding-top: 10px;
@@ -27,17 +36,10 @@ body {
 .footer_container {
   background: cadetblue;
   padding: 10px;
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.7), -1px -1px 5px rgba(0,0,0,0.7);
 }
 
 /* Header/Blog Title */
-.icon_left {
-  float: left;
-  padding: 4px;
-}
-.icon_right {
-  float: right;
-  padding: 1px;
-}
 .header_title{
   font-size: 36px;
   text-align: center;
@@ -54,6 +56,7 @@ body {
   grid-column: 1;
   grid-row: 1;
   border: 1px solid white;
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.7), -1px -1px 5px rgba(0,0,0,0.7);
 }
 .user_dropdown {
   padding: 10px;
@@ -65,17 +68,25 @@ body {
   margin-right: auto;
   width: 100%;
 }
+/* Style of html.h2 components belonging to left column */
+.leftcolumn h2{
+  padding: 5px;
+  color: white;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
 /* Style of html.p components belonging to left column */
 .leftcolumn p{
   padding: 5px;
   color: white;
-  font-size: 20px;
+  font-size: 1.2em;
 }
 /* Style of html.b components belonging to left column */
 .leftcolumn b{
   padding: 5px;
   color: white;
-  font-size: 20px;
+  font-size: 1em;
 }
 /* Right column */
 .rightcolumn {
@@ -93,12 +104,13 @@ body {
   background-color: cadetblue;
   padding: 1px;
   border: 1px solid white;
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.7), -1px -1px 5px rgba(0,0,0,0.7);
 }
 /* Add a container in matrix form for the graphs*/
 .matrix_graph{
   display: grid;
   grid-template-columns: 25 15 auto auto;
-  grid-template-rows: 200px auto;
+  grid-template-rows: 10em 30rem;
   height: : 100%;
   column-gap: 10px;
   row-gap: 10px;
@@ -125,16 +137,7 @@ body {
   width: 100%;
   float: left;
   border: 1px solid white;
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.7), -1px -1px 5px rgba(0,0,0,0.7);
 }
 
-/* Footer section */
-.footer_section {
-  width: 100%;
-}
 
-.footer_section {
-    display: flex;
-    padding: 5px;
-    background-color: #45a1ff;
-    color: #fff;
-}
