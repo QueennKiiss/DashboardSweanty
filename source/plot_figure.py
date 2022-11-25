@@ -56,7 +56,7 @@ def salt_loss_figure(data):
             'text': "Tendency to lose salt",
             'font': {'size': 30},
             'xref': 'container',
-            'x': 0.25,
+            'x': 0.1,
             },
         margin=dict(l=10, r=10, t=50, b=50, pad=4),
         paper_bgcolor='cadetblue',
