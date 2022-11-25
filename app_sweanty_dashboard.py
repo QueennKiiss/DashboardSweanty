@@ -6,7 +6,9 @@ from source import layout_components, callbacks
 
 
 def main() -> None:
+    """ Main function """
     app = dash.Dash(__name__, external_stylesheets=[dbc.themes.QUARTZ])
+
     # Build App layout
     app.layout = html.Div(
         id='body',
@@ -25,9 +27,11 @@ def main() -> None:
             layout_components.footer(app),
             ]
         )
+
     # App Callbacks
     callbacks.update_volunteer_data(app)
     callbacks.update_input_data(app)
+
     # Run the app server
     app.run_server(debug=True)
 
