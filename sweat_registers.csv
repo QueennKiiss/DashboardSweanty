@@ -1,16 +1,16 @@
 user_name,user_lastname,user_age,user_sport,voltage,weight_initial,weight_final
-Marcos,Voluntario 1,20,Runner,0.10,55.5,48
-Laura,Laura,21,Runner,0.2,70,49
-Voluntario 3,Voluntario 3,22,Runner,0.3,52,50
-Voluntario 4,Voluntario 4,23,Runner,0.4,53,51
-Voluntario 5,Voluntario 5,24,Runner,0.5,54,52
-Voluntario 6,Voluntario 6,25,Runner,0.6,55,53
-Voluntario 7,Voluntario 7,26,Runner,0.7,56,54
-Voluntario 8,Voluntario 8,27,Runner,0.8,57,55
-Voluntario 9,Voluntario 9,28,Runner,0.9,58,56
-Voluntario 10,Voluntario 10,29,Runner,0.10,59,57
-Voluntario 11,Voluntario 11,30,Runner,0.11,60,58
-Voluntario 12,Voluntario 12,31,Runner,0.12,61,59
-Voluntario 13,Voluntario 13,32,Runner,0.13,62,60
-Voluntario 14,Voluntario 14,33,Runner,0.14,63,61
-Voluntario 15,Voluntario 15,34,Runner,0.15,64,62
+Marcos,Voluntario 1,20,Football,0.10,55.5,48
+Laura,Laura,21,Padel,0.2,70,49
+Athl. 3,Athl. 3,22,Run,0.3,52,50
+Athl. 4,Athl. 4,23,Run,0.4,53,51
+Athl. 5,Athl. 5,24,Run,0.5,54,52
+Athl. 6,Athl. 6,25,Trail,0.6,55,53
+Athl. 7,Athl. 7,26,Trail,0.7,56,54
+Athl. 8,Athl. 8,27,Trail,0.8,57,55
+Athl. 9,Athl. 9,28,Trail,0.9,58,56
+Ath. 10,Athl. 10,29,Triahtlon,0.10,59,57
+Ath. 11,Athl. 11,30,Triahtlon,0.11,60,58
+Ath. 12,Athl. 12,31,Triahtlon,0.12,61,59
+Ath. 13,Athl. 13,32,Triahtlon,0.13,62,60
+Ath. 14,Athl. 14,33,Triahtlon,0.14,63,61
+Ath. 15,Athl. 15,34,Triahtlon,0.15,64,62
