@@ -1,109 +1,134 @@
+""" Module containing html components"""
+
 from dash import Dash, dcc, html
 from source import data
+import dash_bootstrap_components as dbc
 
 
 def header(app: Dash) -> html.Div:
-    # HEADER
+    """HEADER"""
     sweanty_icon = app.get_asset_url("img/logo_sweanty_1-184x81.png")
-    bewolfish_icon = app.get_asset_url("img/bewolfish_logo_color.png")
 
     return html.Div(
         className="header_container",
         children=[
             html.Div(
-                className="cell",
-                children=[html.Img(className="icon_left", src=sweanty_icon)]
+                className="cell_image",
+                children=[
+                    html.Img(className="icon_left", src=sweanty_icon)]
                 ),
             html.Div(
-                className="cell",
-                children=[html.H1(className="header_title", children="SWEANTY STUDY")],
-                ),
-            html.Div(
-                className="cell",
-                children=[html.Img(className="icon_right", src=sweanty_icon)]
-                ),
+                className="Dashboard_title",
+                children=[html.H1("Swenty results dashboard")],
+                )
             ]
         )
 
 
 def main_content(app: Dash) -> html.Div:
-    # Main Content
+    """# Main Content"""
     return html.Div(
         className="main_content_container",
         children=[
-            html.Div(
-                children=[left_column(app)]
-                ),
-            html.Div(
-                children=[right_column(app)]
-                )
+            left_column(app),
+            right_column(app),
             ]
         )
 
 
 def right_column(app: Dash) -> html.Div:
-    # RightColumn
+    """# RightColumn"""
     return html.Div(
         className="rightcolumn",
         children=[
             html.Div(
                 className="sub_header",
-                children=html.H2("USER STATISTICS"),
+                children=html.H3("USER STATISTICS"),
                 ),
             html.Div(
-                className="matrix_graph",
+                className="graphs_container",
                 children=[
                     html.Div(
-                        className="graph_box",
-                        children=dcc.Graph(
-                            className="dcc_graph",
-                            id="salt_losses",
-                            config={"displayModeBar": False},
-                            # figure=salt_loss_figure(0),
-                            ),
+                        className="first_col",
+                        children=[
+                            html.Div(
+                                className="graph_box",
+                                children=[
+                                    html.H4("Sweat ID"),
+                                    dcc.Graph(
+                                        className="dcc_graph_info",
+                                        id="sweat_id",
+                                        config={"displayModeBar": False},
+                                        ),
+                                    ],
+                                ),
+                            html.Div(
+                                className="graph_box",
+                                children=[
+                                    html.H4("Tendency to lose salt"),
+                                    dcc.Graph(
+                                        className="dcc_graph_info",
+                                        id="salt_losses",
+                                        config={"displayModeBar": False},
+                                        ),
+                                    ],
+                                ),
+                            html.Div(
+                                className="graph_box",
+                                children=[
+                                    html.H4("Weight comparison"),
+                                    dcc.Graph(
+                                        className="dcc_graph",
+                                        id="weight_graph",
+                                        config={"displayModeBar": False},
+                                        ),
+                                    ]
+                                ),
+                            ],
                         ),
                     html.Div(
-                        className="graph_box",
-                        children=dcc.Graph(
-                            className="dcc_graph",
-                            id="sweat_id",
-                            config={"displayModeBar": False},
-                            # figure=sweat_id_figure(0),
-                            ),
-                        ),
-                    html.Div(
-                        className="dcc_graph_two_columns",
-                        children=dcc.Graph(
-                            className="dcc_graph",
-                            id="weight_graph",
-                            config={"displayModeBar": False},
-                            # figure=weight_figure(None, 0, 0)
-                            )
-                        ),
-                    html.Div(
-                        className="dcc_graph_three_columns",
-                        children=dcc.Graph(
-                            id="bar_graph",
-                            className="dcc_graph",
-                            config={"displayModeBar": False},
-                            # figure=salt_amount([0], [0])
-                            ),
+                        className="second_col",
+                        children=[
+                            html.Div(
+                                className="dcc_graph_three_columns",
+                                children=[
+                                    html.H4("Salt amount"),
+                                    dcc.Graph(
+                                        id="bar_graph",
+                                        className="dcc_graph",
+                                        config={"displayModeBar": False},
+                                        ),
+                                    ],
+                                ),
+                            html.Div(
+                                className="dcc_graph_three_columns",
+                                children=[
+                                    html.H4("Salt amount"),
+                                    dcc.Graph(
+                                        id="bar_graph_2",
+                                        className="dcc_graph",
+                                        config={"displayModeBar": False},
+                                        ),
+                                    ],
+                                ),
+                            ],
                         ),
                     ],
-                )
+                ),
             ],
         )
 
 
 def left_column(app: Dash) -> html.Div:
+    """# LeftColumn"""
     user_profile_img = app.get_asset_url("img/user_profile.png")
-    # LeftColumn
     return html.Div(
         className='leftcolumn',
         children=[
-            html.H2(
-                "USER PROFILE",
-                # style={'textAlign': 'center', 'color': 'white'}
+            html.H3("USER PROFILE"),
+            html.Img(
+                className="user_image",
+                src=user_profile_img,
                 ),
             dcc.Dropdown(
                 id='user',
@@ -111,21 +136,36 @@ def left_column(app: Dash) -> html.Div:
                 options=data.get_plot_data()['user_name'],
                 placeholder="Select a user..."
                 ),
-            html.Img(className="user_image", src=user_profile_img, ),
-            html.B("Name:"),
-            html.P(id="user_name"),
-            html.B("LastName:"),
-            html.P(id="user_lastname"),
-            html.B("Age:"),
-            html.P(id="user_age"),
-            html.B("Sport:"),
-            html.P(id="user_sport"),
+            dbc.Row(
+                children=[
+                    dbc.Col(html.Div(html.B("Name:"))),
+                    dbc.Col(html.Div(html.P(id="user_name", children="Not selected"))),
+                    ],
+                ),
+            dbc.Row(
+                children=[
+                    dbc.Col(html.Div(html.B("Lastname:"))),
+                    dbc.Col(html.Div(html.P(id="user_lastname", children="Not selected"))),
+                    ],
+                ),
+            dbc.Row(
+                children=[
+                    dbc.Col(html.Div(html.B("Age:"))),
+                    dbc.Col(html.Div(html.P(id="user_age", children="Not selected"))),
+                    ],
+                ),
+            dbc.Row(
+                children=[
+                    dbc.Col(html.Div(html.B("Sport:"))),
+                    dbc.Col(html.Div(html.P(id="user_sport", children="Not selected"))),
+                    ],
+                ),
             ],
         )
 
 
 def footer(app: Dash) -> html.Div:
-    # FOOTER
+    """# FOOTER"""
     return html.Div(
         className="footer_container",
         children=[
