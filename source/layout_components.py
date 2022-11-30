@@ -103,7 +103,7 @@ def right_column(app: Dash) -> html.Div:
                             html.Div(
                                 className="dcc_graph_three_columns",
                                 children=[
-                                    html.H4("Salt amount"),
+                                    html.H4("Measured voltage & User age"),
                                     dcc.Graph(
                                         id="bar_graph_2",
                                         className="dcc_graph",
