@@ -7,7 +7,8 @@ from source import layout_components, callbacks
 
 def main() -> None:
     """ Main function """
-    app = dash.Dash(__name__, external_stylesheets=[dbc.themes.QUARTZ])
+    # dbc.themes.BOOTSTRAP is needed to use dbc components
+    app = dash.Dash(__name__, external_stylesheets = [dbc.themes.BOOTSTRAP])
 
     # Build App layout
     app.layout = html.Div(
@@ -24,7 +25,7 @@ def main() -> None:
             # Main Content
             layout_components.main_content(app),
             # FOOTER
-            layout_components.footer(app),
+            # layout_components.footer(app),
             ]
         )
 
