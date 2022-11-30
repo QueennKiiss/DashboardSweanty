@@ -1,4 +1,5 @@
 import plotly.graph_objects as go
+from plotly.subplots import make_subplots
 
 
 # ====================================================
@@ -55,14 +56,14 @@ def weight_figure(user, weight_before, weight_after):
     fig = go.Figure()
     fig.add_trace(
         go.Bar(
-            x=[user], y=[weight_before],
+            x=["Before"], y=[weight_before],
             name='before',
             marker_color='lightblue'
             )
         )
     fig.add_trace(
         go.Bar(
-            x=[user], y=[weight_after],
+            x=["After"], y=[weight_after],
             name='after',
             marker_color='blue'
             )
@@ -82,10 +83,11 @@ def weight_figure(user, weight_before, weight_after):
             tickcolor='black',
             ticklen=10
             ),
-        legend=dict(
-            font={'size': 16},
-            x=0.67, y=0.99
-            ),
+        # legend=dict(
+        #     font={'size': 16},
+        #     x=0.67, y=0.99
+        #     ),
+        showlegend=False,
         margin=dict(l=0, r=5, t=0, b=0, pad=0),
         paper_bgcolor='darkcyan',
         # plot_bgcolor='cadetblue',
@@ -104,7 +106,13 @@ def salt_amount(users, salt_amounts):
         )
     fig.update_layout(
         margin=dict(l=0, r=0, t=0, b=0),
-        xaxis=dict(tickfont_size=18,),
+        xaxis=dict(
+            tickfont_size=18,
+            ticks="outside",
+            tickwidth=2,
+            tickcolor='black',
+            ticklen=10
+            ),
         yaxis=dict(
             title='Salt amount (a.u.)',
             titlefont_size=22,
@@ -121,5 +129,63 @@ def salt_amount(users, salt_amounts):
         paper_bgcolor='darkcyan',
         # plot_bgcolor='cadetblue',
         font={'color': 'black'},
+        )
+    return fig
+
+
+def accumulative_plot(users, measured_voltage, user_age):
+    # fig = go.Figure()
+    fig = make_subplots(specs=[[{"secondary_y": True}]])
+    fig.add_trace(
+        go.Bar(
+            x=users, y=measured_voltage,
+            name='Measured voltage',
+            marker_color='lightblue',
+            ),
+        secondary_y=False,
+        )
+    fig.add_trace(
+        go.Scatter(
+            x=users, y=user_age,
+            name='User age',
+            ),
+        secondary_y=True,
+        )
+    fig.update_layout(
+        margin=dict(l=0, r=0, t=0, b=0),
+        xaxis=dict(
+            tickfont_size=18,
+            ticks="outside",
+            tickwidth=2,
+            tickcolor='black',
+            ticklen=10,
+            ),
+        yaxis=dict(
+            title='Measured voltage (V)',
+            titlefont_size=22,
+            tickfont_size=18,
+            ticks="outside",
+            tickwidth=2,
+            tickcolor='black',
+            ticklen=10,
+            range=[0, 1],
+            ),
+        barmode='group',
+        bargap=0.15,  # gap between bars of adjacent location coordinates.
+        bargroupgap=0.1,  # gap between bars of the same location coordinate.
+        yaxis2=dict(
+            title='User age (years)',
+            titlefont_size=22,
+            titlefont=dict(color="red"),
+            tickfont=dict(color="red", size=18),
+            ticks="outside",
+            tickwidth=2,
+            tickcolor='red',
+            ticklen=10,
+            range=[10, 40],
+            ),
+        paper_bgcolor='darkcyan',
+        font={'color': 'black'},
+        showlegend=False,
         )
     return fig
