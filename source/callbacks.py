@@ -4,15 +4,15 @@ from source import plot_figure, data
 
 
 def update_input_data(app: Dash) -> plot_figure:
-    @app.callback([Output('bar_graph', 'figure'),Output('bar_graph_2', 'figure'), Output('user', 'options')],
+    @app.callback([Output('bar_graph', 'figure'), Output('bar_graph_2', 'figure'), Output('user', 'options')],
                   Input('interval_data', 'n_intervals'))
     def inner_update_input_data(_):
         updated_data = data.get_plot_data()
         return \
             plot_figure.salt_amount(
                 updated_data['user_name'], updated_data['salt_amount']), \
-            plot_figure.salt_amount(
-                updated_data['user_name'], updated_data['salt_amount']),\
+            plot_figure.accumulative_plot(
+                updated_data['user_name'], updated_data['voltage'], updated_data['user_age']),\
             updated_data['user_name']
 
 
