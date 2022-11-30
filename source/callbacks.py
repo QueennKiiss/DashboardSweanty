@@ -4,11 +4,16 @@ from source import plot_figure, data
 
 
 def update_input_data(app: Dash) -> plot_figure:
-    @app.callback([Output('bar_graph', 'figure'), Output('user', 'options')],
+    @app.callback([Output('bar_graph', 'figure'),Output('bar_graph_2', 'figure'), Output('user', 'options')],
                   Input('interval_data', 'n_intervals'))
-    def inner_update_input_data(n):
+    def inner_update_input_data(_):
         updated_data = data.get_plot_data()
-        return plot_figure.salt_amount(updated_data['user_name'], updated_data['salt_amount']), updated_data['user_name']
+        return \
+            plot_figure.salt_amount(
+                updated_data['user_name'], updated_data['salt_amount']), \
+            plot_figure.salt_amount(
+                updated_data['user_name'], updated_data['salt_amount']),\
+            updated_data['user_name']
 
 
 def update_volunteer_data(app: Dash) -> plot_figure:
@@ -24,7 +29,11 @@ def update_volunteer_data(app: Dash) -> plot_figure:
         Input('user', 'value'))
     def inner_update_volunteer_data(user_name):
         if user_name is None:
-            return plot_figure.sweat_id_figure(0), plot_figure.salt_loss_figure(0), plot_figure.weight_figure(None, 0, 0), None, None, None, None
+            return \
+                plot_figure.sweat_id_figure(0), \
+                plot_figure.salt_loss_figure(0), \
+                plot_figure.weight_figure(None, 0, 0), \
+                "Not selected", "Not selected", "Not selected", "Not selected"
 
         updated_data = data.get_plot_data()
         sweat_id = updated_data[updated_data['user_name'] == user_name]['sweat_id'].values[0]
