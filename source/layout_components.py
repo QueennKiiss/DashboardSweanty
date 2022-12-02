@@ -1,5 +1,6 @@
 """ Module containing html components"""
 
+from datetime import datetime
 from dash import Dash, dcc, html
 from source import data
 import dash_bootstrap_components as dbc
@@ -20,7 +21,47 @@ def header(app: Dash) -> html.Div:
             html.Div(
                 className="Dashboard_title",
                 children=[html.H1("Swenty results dashboard")],
-                )
+                ),
+            html.Div(
+                className="weather_info",
+                children=[
+                    html.Div(
+                        className="hour_container",
+                        children=[
+                            html.P(className="weather_title", children="Hour"),
+                            html.P(
+                                className='weather_value',
+                                id='current_datetime',
+                                children=f"{datetime.now().hour}:{datetime.now().minute}:{datetime.now().second}"
+                                ),
+                            ],
+                        ),
+                    html.Div(
+                        className="temperature_container",
+                        children=[
+                            html.P(className="weather_title", children="Temperature"),
+                            html.P(className='weather_value', children="23.5 C"),
+                            html.Meter(
+                                className="meter_indicator",
+                                value="23.5",
+                                min='0', max='40', low='15', high='35'
+                                )
+                            ]
+                        ),
+                    html.Div(
+                        className="humidity_container",
+                        children=[
+                            html.P(className="weather_title", children="Humidity"),
+                            html.P(className='weather_value', children="60%"),
+                            html.Meter(
+                                className="meter_indicator",
+                                value="60",
+                                min='0', max='100', low='40', high='75', optimum='60'
+                                )
+                            ]
+                        ),
+                    ],
+                ),
             ]
         )
 
