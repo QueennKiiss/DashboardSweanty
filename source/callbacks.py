@@ -1,19 +1,28 @@
+from datetime import datetime
 from dash import Dash
 from dash.dependencies import Input, Output
 from source import plot_figure, data
+import requests
 
 
 def update_input_data(app: Dash) -> plot_figure:
-    @app.callback([Output('bar_graph', 'figure'), Output('bar_graph_2', 'figure'), Output('user', 'options')],
-                  Input('interval_data', 'n_intervals'))
+    @app.callback([
+        Output('bar_graph', 'figure'),
+        Output('bar_graph_2', 'figure'),
+        Output('user', 'options'),
+        Output('current_datetime', 'children')
+        ],
+        Input('interval_data', 'n_intervals'))
     def inner_update_input_data(_):
         updated_data = data.get_plot_data()
+        current_datetime = datetime.now()
+        current_time = f"{current_datetime.hour}:{current_datetime.minute}:{current_datetime.second}"
         return \
             plot_figure.salt_amount(
                 updated_data['user_name'], updated_data['salt_amount']), \
             plot_figure.accumulative_plot(
                 updated_data['user_name'], updated_data['voltage'], updated_data['user_age']),\
-            updated_data['user_name']
+            updated_data['user_name'], current_time
 
 
 def update_volunteer_data(app: Dash) -> plot_figure:
