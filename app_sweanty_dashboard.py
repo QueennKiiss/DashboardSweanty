@@ -17,7 +17,7 @@ def main() -> None:
         children=[
             dcc.Interval(
                 id='interval_data',
-                interval=1 * 2000,  # in milliseconds
+                interval=1 * 1000,  # in milliseconds
                 n_intervals=0
                 ),
             # HEADER
