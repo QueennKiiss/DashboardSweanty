@@ -9,6 +9,7 @@
   border-radius: 5px;
   box-shadow: 1px 1px 5px rgba(0,0,0,0.7), -1px -1px 5px rgba(0,0,0,0.7);
   display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 .cell_image {
@@ -17,6 +18,30 @@
 .Dashboard_title{
   text-align: center;
   align-items: center;
+}
+.weather_info{
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+}
+.hour_container,
+.temperature_container,
+.humidity_container{
+  margin: 10px;
+  padding: 5px 20px 5px 20px;
+  background: darkcyan;
+  border: 1px solid grey;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+.weather_title{
+  font-size: 15px;
+  margin: 0px;
+  padding: 0px;
+}
+.weather_value{
+  font-size: 30px;
+  margin: 0px;
+  padding: 0px;
 }
 
 .main_content_container{
@@ -85,8 +110,9 @@
 .rightcolumn .second_col{
   color: black;
   text-align: center;
-  flex-grow: 3;
+  flex-grow: 5;
 }
+
 .graph_box{
   background: var(--background_card);
   border: 1px solid black;
