@@ -6,6 +6,101 @@ from source import data
 import dash_bootstrap_components as dbc
 
 
+def tab2_content(app: Dash) -> html.Div:
+    user_profile_img = app.get_asset_url("img/user_profile.png")
+    return html.Div(
+        className='tab2_content',
+        children=[
+            html.Img(
+                className="user_image",
+                src=user_profile_img,
+                ),
+            dcc.Dropdown(
+                id='user',
+                className="user_dropdown",
+                options=data.get_plot_data()['user_name'],
+                placeholder="Select a user..."
+                ),
+            dbc.Row(
+                children=[
+                    dbc.Col(html.Div(html.B("Name:"))),
+                    dbc.Col(html.Div(html.P(id="user_name", children="Not selected"))),
+                    ],
+                ),
+            dbc.Row(
+                children=[
+                    dbc.Col(html.Div(html.B("Lastname:"))),
+                    dbc.Col(html.Div(html.P(id="user_lastname", children="Not selected"))),
+                    ],
+                ),
+            dbc.Row(
+                children=[
+                    dbc.Col(html.Div(html.B("Age:"))),
+                    dbc.Col(html.Div(html.P(id="user_age", children="Not selected"))),
+                    ],
+                ),
+            dbc.Row(
+                children=[
+                    dbc.Col(html.Div(html.B("Sport:"))),
+                    dbc.Col(html.Div(html.P(id="user_sport", children="Not selected"))),
+                    ],
+                ),
+            ]
+        )
+
+
+def tab1_content(app: Dash) -> html.Div:
+    user_profile_img = app.get_asset_url("img/user_profile.png")
+    return html.Div(
+        className='tab1_content',
+        children=[
+            html.Div(
+                className='form_fields_container',
+                children=[
+                    html.P(className='form_title', children=["User name:"]),
+                    dcc.Input(
+                        className='form_field',
+                        children=["User name"],
+                        placeholder="Enter the name"),
+                    ],
+                ),
+            html.Div(
+                className='form_fields_container',
+                children=[
+                    html.P(className='form_title', children=["User surnames:"]),
+                    dcc.Input(
+                        className='form_field',
+                        children=["User surnames"],
+                        placeholder="Enter the surnames"),
+                        ],
+                ),
+            html.Div(
+                className='form_fields_container',
+                children=[
+                    html.P(className='form_title', children=["User age:"]),
+                    dcc.Input(
+                        className='form_field',
+                        children=["User age"],
+                        placeholder="Enter the age"),
+                    ]
+                ),
+            html.Div(
+                className='form_fields_container',
+                children=[
+                    html.P(className='form_title', children=["User sport:"]),
+                    dcc.Input(
+                        className='form_field',
+                        children=["User sport"],
+                        placeholder="Enter the sport"),
+                    ],
+                ),
+            html.Button(
+                children='Register New User',
+                className='register_user_button',
+                n_clicks=0),
+            ])
+
+
 def header(app: Dash) -> html.Div:
     """HEADER"""
     sweanty_icon = app.get_asset_url("img/logo_sweanty_1-184x81.png")
@@ -83,10 +178,6 @@ def right_column(app: Dash) -> html.Div:
         className="rightcolumn",
         children=[
             html.Div(
-                className="sub_header",
-                children=html.H3("USER STATISTICS"),
-                ),
-            html.Div(
                 className="graphs_container",
                 children=[
                     html.Div(
@@ -162,43 +253,26 @@ def right_column(app: Dash) -> html.Div:
 
 def left_column(app: Dash) -> html.Div:
     """# LeftColumn"""
-    user_profile_img = app.get_asset_url("img/user_profile.png")
     return html.Div(
         className='leftcolumn',
         children=[
-            html.H3("USER PROFILE"),
-            html.Img(
-                className="user_image",
-                src=user_profile_img,
-                ),
-            dcc.Dropdown(
-                id='user',
-                className="user_dropdown",
-                options=data.get_plot_data()['user_name'],
-                placeholder="Select a user..."
-                ),
-            dbc.Row(
+            dbc.Tabs(
+                className='custom-tabs-container',
                 children=[
-                    dbc.Col(html.Div(html.B("Name:"))),
-                    dbc.Col(html.Div(html.P(id="user_name", children="Not selected"))),
-                    ],
-                ),
-            dbc.Row(
-                children=[
-                    dbc.Col(html.Div(html.B("Lastname:"))),
-                    dbc.Col(html.Div(html.P(id="user_lastname", children="Not selected"))),
-                    ],
-                ),
-            dbc.Row(
-                children=[
-                    dbc.Col(html.Div(html.B("Age:"))),
-                    dbc.Col(html.Div(html.P(id="user_age", children="Not selected"))),
-                    ],
-                ),
-            dbc.Row(
-                children=[
-                    dbc.Col(html.Div(html.B("Sport:"))),
-                    dbc.Col(html.Div(html.P(id="user_sport", children="Not selected"))),
+                    dbc.Tab(
+                        tab_class_name='custom-tab',
+                        label_class_name='custom-title-tab',
+                        active_tab_class_name='custom-tab--selected',
+                        active_label_class_name='custom-title-tab--selected',
+                        children=[tab1_content(app)],
+                        label='New User'),
+                    dbc.Tab(
+                        tab_class_name='custom-tab',
+                        label_class_name='custom-title-tab',
+                        active_tab_class_name='custom-tab--selected',
+                        active_label_class_name='custom-title-tab--selected',
+                        children=[tab2_content(app)],
+                        label='User Profile'),
                     ],
                 ),
             ],
