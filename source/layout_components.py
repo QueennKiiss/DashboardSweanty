@@ -3,50 +3,8 @@
 from datetime import datetime
 from dash import Dash, dcc, html
 from source import data
+from resources import images
 import dash_bootstrap_components as dbc
-
-
-def tab2_content(app: Dash) -> html.Div:
-    user_profile_img = app.get_asset_url("img/user_profile.png")
-    return html.Div(
-        className='tab2_content',
-        children=[
-            html.Img(
-                className="user_image",
-                src=user_profile_img,
-                ),
-            dcc.Dropdown(
-                id='user',
-                className="user_dropdown",
-                options=data.get_plot_data()['user_name'],
-                placeholder="Select a user..."
-                ),
-            dbc.Row(
-                children=[
-                    dbc.Col(html.Div(html.B("Name:"))),
-                    dbc.Col(html.Div(html.P(id="user_name", children="Not selected"))),
-                    ],
-                ),
-            dbc.Row(
-                children=[
-                    dbc.Col(html.Div(html.B("Lastname:"))),
-                    dbc.Col(html.Div(html.P(id="user_lastname", children="Not selected"))),
-                    ],
-                ),
-            dbc.Row(
-                children=[
-                    dbc.Col(html.Div(html.B("Age:"))),
-                    dbc.Col(html.Div(html.P(id="user_age", children="Not selected"))),
-                    ],
-                ),
-            dbc.Row(
-                children=[
-                    dbc.Col(html.Div(html.B("Sport:"))),
-                    dbc.Col(html.Div(html.P(id="user_sport", children="Not selected"))),
-                    ],
-                ),
-            ]
-        )
 
 
 def tab1_content(app: Dash) -> html.Div:
@@ -101,9 +59,52 @@ def tab1_content(app: Dash) -> html.Div:
             ])
 
 
+def tab2_content(app: Dash) -> html.Div:
+    user_profile_img = app.get_asset_url(images.USER_PROFILE_IMG)
+    return html.Div(
+        className='tab2_content',
+        children=[
+            html.Img(
+                className="user_image",
+                src=user_profile_img,
+                ),
+            dcc.Dropdown(
+                id='user',
+                className="user_dropdown",
+                options=data.get_plot_data()['user_name'],
+                placeholder="Select a user..."
+                ),
+            dbc.Row(
+                children=[
+                    dbc.Col(html.Div(html.B("Name:"))),
+                    dbc.Col(html.Div(html.P(id="user_name", children="Not selected"))),
+                    ],
+                ),
+            dbc.Row(
+                children=[
+                    dbc.Col(html.Div(html.B("Lastname:"))),
+                    dbc.Col(html.Div(html.P(id="user_lastname", children="Not selected"))),
+                    ],
+                ),
+            dbc.Row(
+                children=[
+                    dbc.Col(html.Div(html.B("Age:"))),
+                    dbc.Col(html.Div(html.P(id="user_age", children="Not selected"))),
+                    ],
+                ),
+            dbc.Row(
+                children=[
+                    dbc.Col(html.Div(html.B("Sport:"))),
+                    dbc.Col(html.Div(html.P(id="user_sport", children="Not selected"))),
+                    ],
+                ),
+            ]
+        )
+
+
 def header(app: Dash) -> html.Div:
     """HEADER"""
-    sweanty_icon = app.get_asset_url("img/logo_sweanty_1-184x81.png")
+    sweanty_icon = app.get_asset_url(images.SWEANTY_LOGO)
 
     return html.Div(
         className="header_container",
