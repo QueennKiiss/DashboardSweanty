@@ -2,7 +2,15 @@
   --background_section: cadetblue;
   --background_card: darkcyan;
 }
-
+@font-face {
+  font-family: "SuperMarioFont";
+  src: url("/home/mmaestro/.local/share/fonts/SuperMario256.ttf");
+}
+/*
+*{
+ font-family: SuperMario256;
+}
+*/
 .header_container {
   background: var(--background_section);
   border: 1px solid black;
@@ -112,16 +120,14 @@ custom-title-tab--selected{
 .form_fields_container{
 }
 .form_title{
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
   padding: 0px;
   margin: 15px 0px 0px 0px;
 }
 .form_field{
 }
-.form_hint_text{
-  text: 50%;
-}
+
 .register_user_button{
   height: 80px;
   width: 200px;
