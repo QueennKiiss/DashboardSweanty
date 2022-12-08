@@ -76,18 +76,28 @@
 }
 .custom-tab {
   background: darkcyan;
+  border: 1px solid white;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
 }
 .custom-title-tab{
   margin: 0px;
-  padding: 5px;
+  padding: 4px;
+  font-size: 10px;
+  color: white;
 }
 .custom-tab--selected {
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
 }
 custom-title-tab--selected{
   color: red;
+  font-size: 10px;
   background-color: #ff1100 !important;
   margin: 0px;
   padding: 0px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
 }
 
 .leftcolumn H3{
@@ -114,7 +124,7 @@ custom-title-tab--selected{
 .B .P {
   padding: 5px;
 }
-.tab1_content{
+.register_new_user{
   margin: 30px 0px 0px 0px;
 }
 .form_fields_container{
@@ -131,9 +141,9 @@ custom-title-tab--selected{
 .register_user_button{
   height: 80px;
   width: 200px;
-  margin: 50px 20px 0px 20px;
+  margin: 50px 0px 0px 0px;
   color: #fff;
-  padding: 15px 25px;
+  padding: 0px;
   background-color: darkcyan;
   background-image: radial-gradient(93% 87% at 87% 89%, rgba(0, 0, 0, 0.23) 0%, transparent 86.18%), radial-gradient(66% 66% at 26% 20%, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 69.79%, rgba(255, 255, 255, 0) 100%);
   box-shadow: inset -3px -3px 9px rgba(255, 255, 255, 0.25), inset 0px 3px 9px rgba(255, 255, 255, 0.3), inset 0px 1px 1px rgba(255, 255, 255, 0.6), inset 0px -8px 36px rgba(0, 0, 0, 0.3), inset 0px 1px 5px rgba(255, 255, 255, 0.6), 2px 19px 31px rgba(0, 0, 0, 0.2);
