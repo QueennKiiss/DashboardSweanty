@@ -1,8 +1,65 @@
+import logging
+import requests
 from datetime import datetime
 from dash import Dash
-from dash.dependencies import Input, Output
+from dash.dependencies import Input, Output, State
 from source import plot_figure, data
-import requests
+from database import connection
+
+
+def create_new_session(app: Dash):
+    @app.callback(
+        Output('custom-tabs-container-id', 'active_tab'),
+        Output('session_name_input', 'value'),
+        Input('new_session_button', 'n_clicks'),
+        State('session_name_input', 'value'),
+        State('custom-tabs-container-id', 'active_tab')
+        )
+    def inner_create_new_session(n_clicks: int, session_name: str, prev_active_tab: str):
+        if n_clicks > 0:
+            db_connector = connection.DBConnector()
+            engine = db_connector.engine_connection()
+            session = db_connector.create_db_session(engine)
+            db_connector.insert_to_table(
+                'DashboardSession', session, session_name=session_name
+                )
+            # TODO: Insert query to know the id of the session
+            return 'new_user_tab_id', ''
+        # Return the previous active tab to avoid empty content
+        return prev_active_tab, ''
+
+
+def create_new_user(app: Dash):
+    @app.callback([
+        Output('user_name_field', 'value'),
+        Output('user_surname_field', 'value'),
+        Output('user_age_field', 'value'),
+        Output('user_sport_field', 'value'),
+        ],
+        [Input('register_user_button', 'n_clicks'),
+        State('user_name_field', 'value'),
+        State('user_surname_field', 'value'),
+        State('user_age_field', 'value'),
+        State('user_sport_field', 'value'),
+        ])
+    def inner_create_new_user(
+            n_clicks: int,
+            user_name: str,
+            user_surname: str,
+            user_age: int,
+            user_sport: str,
+            # session_id: int,
+            ):
+        if n_clicks > 0:
+            db_connector = connection.DBConnector()
+            engine = db_connector.engine_connection()
+            session = db_connector.create_db_session(engine)
+            db_connector.insert_to_table(
+                'Athletes', session,
+                name=user_name, surname=user_surname,
+                age=user_age, sport=user_sport, session_id=2
+                )
+        return '', '', '', ''
 
 
 def update_input_data(app: Dash) -> plot_figure:
@@ -16,7 +73,7 @@ def update_input_data(app: Dash) -> plot_figure:
     def inner_update_input_data(_):
         updated_data = data.get_plot_data()
         current_datetime = datetime.now()
-        current_time = f"{current_datetime.hour}:{current_datetime.minute}:{current_datetime.second}"
+        current_time = f"{current_datetime.hour:02d}:{current_datetime.minute:02d}:{current_datetime.second:02d}"
         return \
             plot_figure.salt_amount(
                 updated_data['user_name'], updated_data['salt_amount']), \
