@@ -22,11 +22,15 @@ class DashboardSessions(Base):
         return f"Session {self.session_name} started at {self.session_date}"
 
 
-def insert_to_dashboard(session: Session, session_name: str) -> None:
+def insert_to_dashboard(session: Session, session_name: dict) -> None:
     """ Insert entries to dashboard table"""
-    entry = DashboardSessions(session_name=session_name)
-    session.add(entry)
-    session.commit()
+    try:
+        name = session_name.get('session_name')
+        entry = DashboardSessions(session_name=name)
+        session.add(entry)
+        session.commit()
+    except Exception as excp:
+        logging.error(excp)
 
 
 class Athletes(Base):
@@ -36,6 +40,8 @@ class Athletes(Base):
     id = Column(Integer(), primary_key=True)
     name = Column(String(50), nullable=False)
     surnames = Column(String(10))
+    age = Column(Integer())
+    sport = Column(String(50), nullable=False)
     session_id = Column(
         Integer(),
         ForeignKey("dashboard_sessions.id", ondelete="CASCADE"),
@@ -48,11 +54,15 @@ class Athletes(Base):
         return f"Athlete: {self.name} {self.surnames} Belongs to sessions: {self.session}"
 
 
-def insert_to_athletes(session: Session, entry_args: tuple) -> None:
+def insert_to_athletes(session: Session, entry_args: dict) -> None:
     """ Insert entries to Athletes table"""
     try:
-        name, surname, dashboard_session = entry_args
-        entry = Athletes(name=name, surnames=surname, session_id=dashboard_session)
+        entry = Athletes(
+            name=entry_args.get('name'),
+            surnames=entry_args.get('surname'),
+            age=int(entry_args.get('age')),
+            sport=entry_args.get('sport'),
+            session_id=entry_args.get('session_id'))
         session.add(entry)
         session.commit()
     except Exception as excp:
