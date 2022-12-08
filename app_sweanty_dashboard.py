@@ -31,6 +31,8 @@ def main() -> None:
     # App Callbacks
     callbacks.update_volunteer_data(app)
     callbacks.update_input_data(app)
+    callbacks.create_new_session(app)
+    callbacks.create_new_user(app)
 
     # Run the app server
     app.run_server(debug=True)
