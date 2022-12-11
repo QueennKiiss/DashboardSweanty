@@ -27,6 +27,27 @@ def create_new_session(app: Dash) -> html.Div:
                 className='register_user_button',
                 id='new_session_button',
                 n_clicks=0,),
+            html.P(
+                className="or_parag",
+                children="--- or ---"
+                ),
+            html.Div(
+                className='form_fields_container',
+                children=[
+                    html.P(className='form_title', children=["Session name:"]),
+                    dcc.Dropdown(
+                        id='session',
+                        className="session_dropdown form_field",
+                        options=["Session1", "Session2", "Session3"],
+                        placeholder="Select a serssion..."
+                        ),
+                    ],
+                ),
+            html.Button(
+                children='Select Session',
+                className='register_user_button',
+                id='select_button',
+                n_clicks=0,),
             ])
 
 
@@ -103,24 +124,28 @@ def select_user_info(app: Dash) -> html.Div:
                 placeholder="Select a user..."
                 ),
             dbc.Row(
+                className='user_profile_field_row',
                 children=[
                     dbc.Col(html.Div(html.B("Name:"))),
                     dbc.Col(html.Div(html.P(id="user_name", children="Not selected"))),
                     ],
                 ),
             dbc.Row(
+                className='user_profile_field_row',
                 children=[
                     dbc.Col(html.Div(html.B("Lastname:"))),
                     dbc.Col(html.Div(html.P(id="user_lastname", children="Not selected"))),
                     ],
                 ),
             dbc.Row(
+                className='user_profile_field_row',
                 children=[
                     dbc.Col(html.Div(html.B("Age:"))),
                     dbc.Col(html.Div(html.P(id="user_age", children="Not selected"))),
                     ],
                 ),
             dbc.Row(
+                className='user_profile_field_row',
                 children=[
                     dbc.Col(html.Div(html.B("Sport:"))),
                     dbc.Col(html.Div(html.P(id="user_sport", children="Not selected"))),
