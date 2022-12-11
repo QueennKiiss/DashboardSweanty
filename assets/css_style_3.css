@@ -11,14 +11,19 @@
  font-family: SuperMario256;
 }
 */
+body{
+  background: darkgrey;
+}
+
 .header_container {
   background: var(--background_section);
   border: 1px solid black;
-  border-radius: 5px;
+  border-radius: 10px;
   box-shadow: 1px 1px 5px rgba(0,0,0,0.7), -1px -1px 5px rgba(0,0,0,0.7);
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 5px 5px 0px 5px;
 }
 .cell_image {
   padding: 10px;
@@ -55,49 +60,65 @@
 .main_content_container{
   width: 100%;
   height: 100%;
-  background: white;
   display: flex;
   margin: 0px 0px 0px 0px;
   align-items: stretch;
 }
 .leftcolumn {
-  background: var(--background_section);
-  margin: 10px 10px 0px 0px;
-  padding: 0px 10px 10px 10px;
-  border: 1px solid black;
-  border-radius: 5px;
-  box-shadow: 1px 1px 5px rgba(0,0,0,0.7), -1px -1px 5px rgba(0,0,0,0.7);
-  flex-basis: 10rem;
+  margin: 10px 10px 0px 5px;
+  padding: 0px 0px 0px 0px;
+  flex-basis: 20rem;
 }
 
 .custom-tabs-container {
-  margin: 10px 0px 10px 0px;
-  width: 200px;
+  margin: 0px 0px 1px 0px;
+  width: 100%;
 }
 .custom-tab {
   background: darkcyan;
-  border: 1px solid white;
-  border-top-right-radius: 10px;
-  border-top-left-radius: 10px;
+  border: 2px solid black;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
 }
 .custom-title-tab{
   margin: 0px;
   padding: 4px;
-  font-size: 10px;
+  font-size: 15px;
   color: white;
+  font-weight: bold;
 }
 .custom-tab--selected {
-  border-top-right-radius: 10px;
-  border-top-left-radius: 10px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  border: 1px solid black;
 }
 custom-title-tab--selected{
   color: red;
   font-size: 10px;
-  background-color: #ff1100 !important;
+  font-weight: bold;
+  background-color: red !important;
   margin: 0px;
   padding: 0px;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
+}
+.create_new_session,
+.register_new_user,
+.select_user_info{
+  height: 75vh;
+  background: darkcyan;
+  border: 1px solid black;
+  border-radius: 2px;
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.7), -1px -1px 5px rgba(0,0,0,0.7);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.or_parag{
+  margin: 20px;
+  padding: 5px;
+  font-size: 30px;
 }
 
 .leftcolumn H3{
@@ -114,28 +135,36 @@ custom-title-tab--selected{
   padding: 0px;
 }
 .user_dropdown {
-  width: 15rem;
+  width: 20rem;
   padding: 0px;
   margin-bottom: 20px;
+  margin: 0px 10px 20px 10px;
 }
 .user_image {
-  padding: 25px;
+  padding: 20px;
 }
+.user_profile_field_row{
+  width: 20rem;
+  font-size: 20px;
+}
+
 .B .P {
   padding: 5px;
 }
-.register_new_user{
-  margin: 30px 0px 0px 0px;
-}
+
 .form_fields_container{
 }
+
 .form_title{
   font-size: 18px;
   font-weight: bold;
   padding: 0px;
-  margin: 15px 0px 0px 0px;
+  margin: 15px 10px 0px 10px;
+  width: 20rem;
 }
 .form_field{
+  width: 20rem;
+  margin: 0px 10px 0px 10px;
 }
 
 .register_user_button{
